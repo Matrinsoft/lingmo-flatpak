@@ -11,16 +11,11 @@ find_package(Qt6 REQUIRED COMPONENTS Core DBus)
 add_library(lingmo-flatpak SHARED
     src/main.cpp
 )
+target_compile_definitions(lingmo-flatpak PRIVATE LINGMO_FLATPAK_LIBRARY)
 
 target_link_libraries(lingmo-flatpak PUBLIC
     Qt6::Core
     Qt6::DBus
-)
-
-include(GenerateExportHeader)
-generate_export_header(lingmo-flatpak
-    EXPORT_MACRO_NAME LINGMO_LINGMO_FLATPAK_EXPORT
-    EXPORT_FILE_NAME /export.h
 )
 
 install(TARGETS lingmo-flatpak
